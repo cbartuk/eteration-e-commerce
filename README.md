@@ -1,27 +1,27 @@
-📦 Eteration E-Commerce Web Application
+# 📦 Eteration E-Commerce Web Application
+
 Bu proje, modern bir e-ticaret uygulaması oluşturmayı hedeflemektedir. Kullanıcılar ürünleri listeleyebilir, filtreleyebilir, sepete ekleyebilir ve sepetlerini görüntüleyebilir. Uygulama, kullanıcı deneyimini ön planda tutarak responsive bir tasarımla geliştirilmiştir ve mobil, tablet ve masaüstü cihazlarla uyumlu çalışır.
 
-📝 Proje Planlaması
-Projenin Başlangıcı:
-Kullanıcı deneyimini en üst düzeye çıkarmayı amaçlayan bir tasarım planı oluşturuldu.
-Uygulamanın temel fonksiyonları tanımlandı: Ürün listeleme, filtreleme, sepet yönetimi, ürün arama ve sıralama.
-Redux kullanılarak global state yönetimi yapılması kararlaştırıldı. Böylece filtreleme ve sepet işlemlerinde verilerin merkezi bir yerden yönetilmesi sağlanacaktı.
-Yapı Planlaması:
-Component bazlı bir yapı kurularak, her bir bileşenin sorumlulukları net bir şekilde belirlendi.
-Tasarım, mobile-first prensibi ile planlandı ve responsive olması için Tailwind CSS tercih edildi.
-Ürünlerin ve filtrelerin yönetimi için bir mock API entegrasyonu planlandı ve verilerin Redux aracılığıyla yönetilmesi kararlaştırıldı.
+## 📝 Proje Planlaması
 
+### Projenin Başlangıcı:
+- Projeye başlamadan önce, kullanıcı deneyimini en üst düzeye çıkarmayı amaçlayan bir tasarım planı oluşturuldu.
+- Uygulamanın temel fonksiyonları tanımlandı: Ürün listeleme, filtreleme, sepet yönetimi, ürün arama ve sıralama.
+- Redux kullanılarak global state yönetimi yapılması kararlaştırıldı.
 
-🛠️ Kullanılan Teknolojiler ve Araçlar
-Next.js: Sayfa yönlendirmeleri, dinamik sayfalar ve performans optimizasyonları için kullanıldı.
-React: Component bazlı yapı ve kullanıcı etkileşimleri için.
-Redux Toolkit: Global state yönetimi ve veri akışını sağlamak için.
-Tailwind CSS: Hızlı ve verimli stil vermek, responsive tasarım sağlamak için.
-Framer Motion: Animasyonlar ve geçişler için.
-React-Icons: İkon kullanımları için.
+### Yapı Planlaması:
+- **Component bazlı** bir yapı kurularak, her bir bileşenin sorumlulukları net bir şekilde belirlendi.
+- Tasarım, **mobile-first** prensibi ile planlandı.
+- Ürünlerin ve filtrelerin yönetimi için bir mock API entegrasyonu planlandı.
 
+## 🛠️ Kullanılan Teknolojiler ve Araçlar
+- **Next.js**: Sayfa yönlendirmeleri, dinamik sayfalar ve performans optimizasyonları için.
+- **React**: Component bazlı yapı ve kullanıcı etkileşimleri için.
+- **Redux Toolkit**: Global state yönetimi ve veri akışını sağlamak için.
+- **Tailwind CSS**: Hızlı ve verimli stil vermek, responsive tasarım sağlamak için.
+- **Framer Motion**: Animasyonlar ve geçişler için.
 
-📁 Proje Yapısı ve Component Ayrımı
+## 📁 Proje Yapısı ve Component Ayrımı
 📂 e-commerce-app
 ├── 📂 components
 │   ├── Header.tsx
@@ -49,7 +49,7 @@ React-Icons: İkon kullanımları için.
 └── README.md
 
 
-🚀 Geliştirme Süreçleri
+## 🚀 Geliştirme Süreçleri
 Component Geliştirme:
 Proje Header, Filters, ProductList, ve Cart gibi temel bileşenlere ayrıldı.
 Her bir component, kendi işlevine odaklanacak şekilde geliştirildi.
@@ -65,12 +65,12 @@ Masaüstü cihazlarda filtrelerin sidebar olarak görünmesi ve sepetin sağda s
 Ürünler ProductList bileşeninde listelendi ve sayfalama (ReactPaginate) kullanılarak 12 ürünlük gruplar halinde görüntülendi.
 Arama, sıralama ve filtreleme işlemleri Filters bileşeni aracılığıyla yapıldı ve Redux state'e göre ProductList güncellendi.
 
-🎨 Tasarım Yaklaşımı ve Düşüncesi
+## 🎨 Tasarım Yaklaşımı ve Düşüncesi
 Mobile-First Design: İlk olarak mobil cihazlarda kullanıcı deneyimi düşünülerek tasarım yapıldı, ardından daha büyük ekranlar için optimize edildi.
 Kullanıcı Odaklı Tasarım: Kullanıcıların kolayca ürün arayabilmesi, filtreleyebilmesi ve sepete ekleyebilmesi için sade ve anlaşılır bir arayüz tasarlandı.
 Modern ve Şık Görünüm: Tailwind CSS kullanılarak modern ve şık bir arayüz elde edildi. Renkler ve tipografi kullanıcıyı yormayacak şekilde ayarlandı.
 
-⚙️ Kurulum ve Çalıştırma
+## ⚙️ Kurulum ve Çalıştırma
 Bu projeyi klonlayın:
 git clone https://github.com/cbartuk/eteration-e-commerce.git
 
@@ -105,4 +105,5 @@ Aşağıdaki diyagramda, projenin temel bileşenlerinin nasıl bir araya geldiğ
     +---------------------------+
     |       LocalStorage        |
     +---------------------------+
+
 
