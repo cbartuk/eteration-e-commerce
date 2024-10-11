@@ -22,6 +22,8 @@ Bu proje, modern bir e-ticaret uygulaması oluşturmayı hedeflemektedir. Kullan
 - **Framer Motion**: Animasyonlar ve geçişler için.
 
 ## 📁 Proje Yapısı ve Component Ayrımı
+
+```bash
 📂 e-commerce-app
 ├── 📂 components
 │   ├── Header.tsx
@@ -47,6 +49,7 @@ Bu proje, modern bir e-ticaret uygulaması oluşturmayı hedeflemektedir. Kullan
 │   └── globals.css
 ├── tailwind.config.js
 └── README.md
+```
 
 
 ## 🚀 Geliştirme Süreçleri
@@ -84,6 +87,7 @@ npm run dev
 📊 Görseller ve Çizimler
 Aşağıdaki diyagramda, projenin temel bileşenlerinin nasıl bir araya geldiği ve Redux state yönetimi ile nasıl çalıştığı gösterilmiştir:
 
+```bash
 +----------------------------+
 |          Header            |
 +----------------------------+
@@ -105,5 +109,5 @@ Aşağıdaki diyagramda, projenin temel bileşenlerinin nasıl bir araya geldiğ
     +---------------------------+
     |       LocalStorage        |
     +---------------------------+
-
+```
 
