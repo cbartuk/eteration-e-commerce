@@ -141,10 +141,10 @@ export default function ProductList() {
           pageCount={pageCount}
           onPageChange={handlePageClick}
           containerClassName="flex justify-center mt-6 space-x-2"
-          pageClassName="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded"
+          pageClassName="px-3 py-1 sm:px-4 sm:py-2 bg-gray-300 hover:bg-gray-400 rounded text-sm sm:text-base"
           activeClassName="bg-blue-500 text-white"
-          previousClassName="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded"
-          nextClassName="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded"
+          previousClassName="px-3 py-1 sm:px-4 sm:py-2 bg-gray-300 hover:bg-gray-400 rounded text-sm sm:text-base"
+          nextClassName="px-3 py-1 sm:px-4 sm:py-2 bg-gray-300 hover:bg-gray-400 rounded text-sm sm:text-base"
           disabledClassName="opacity-50"
           previousLabel="<"
           nextLabel=">"
