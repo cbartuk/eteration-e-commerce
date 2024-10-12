@@ -15,7 +15,7 @@ jest.mock("next/navigation", () => ({
 describe("ProductList", () => {
   test("renders ProductList component with mock products", () => {
     // Rastgele 2 ürün üretmek için mock fonksiyonumuzu kullanıyoruz
-    const mockProducts = generateMockProductData(2);
+    const mockProducts = generateMockProductData(10);
 
     const initialState: ProductState = {
       products: mockProducts,

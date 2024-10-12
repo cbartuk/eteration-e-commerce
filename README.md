@@ -144,3 +144,59 @@ PASS  features/product/productSlice.test.ts
 PASS  components/ProductList.test.tsx
 PASS  components/Header.test.tsx
 ```
+
+# 📄 Testlerde Dinamik Mock Veri Kullanımı
+Bu projede, testlerin doğruluğunu ve güvenilirliğini artırmak amacıyla faker.js kullanılarak dinamik mock veriler oluşturulmuştur. Bu yöntem, testlerin her çalıştırıldığında rastgele veri ile çalışmasını sağlar ve yan etkilerden kaçınarak daha sağlam testler yazılmasına yardımcı olur.
+
+## 🔧 Mock Veri Üretimi
+Statik mock veriler yerine, testlerin her seferinde farklı verilerle çalışması için generateMockProductsData fonksiyonu oluşturulmuştur. Bu fonksiyon, belirli bir ürün sayısını argüman olarak alır ve bu sayı kadar rastgele ürün bilgisi üretir.
+
+```bash
+import { faker } from '@faker-js/faker';
+import { Product } from '../features/product/productSlice';
+
+export const generateMockProductsData = (count: number): Product[] => {
+  return Array.from({ length: count }, () => ({
+    id: faker.datatype.uuid(),
+    name: faker.commerce.productName(),
+    price: parseFloat(faker.commerce.price()),
+    image: faker.image.url(),
+    description: faker.commerce.productDescription(),
+    brand: faker.company.name(),
+    model: faker.commerce.productMaterial(),
+  }));
+};
+
+```
+Bu fonksiyon, her test çalıştırıldığında benzersiz veriler oluşturur. Böylece testlerin her zaman doğru sonuç vermesi sağlanır ve testlerde yan etkilerin (side effect) önüne geçilir.
+
+## 🧪 Testlerde Kullanımı
+ProductList.test.tsx dosyasında daha önce statik ürün verileri kullanılırken, artık dinamik olarak üretilen veriler kullanılmaktadır. Aşağıda bu fonksiyonun nasıl kullanıldığı gösterilmektedir:
+
+```bash
+
+describe("ProductList", () => {
+  test("renders ProductList component with dynamic mock data", () => {
+    const mockProducts = generateMockProductsData(10); // Rastgele 10 ürün üretilir.
+
+```
+
+## 📦 Gerekli Yüklemeler
+Projeye faker.js kütüphanesini yüklemek için aşağıdaki komutu kullanabilirsiniz:
+
+```bash
+npm install @faker-js/faker --save-dev
+```
+
+## 📚 Amaç
+### Bu yöntem ile:
+
+* Random mock veriler üretilerek testlerin her çalıştırıldığında farklı veri setleriyle çalışması sağlanır.
+* Yan etkiler ve bias (ön yargı) test durumları daha iyi yakalanabilir.
+* Testlerin her zaman başarılı olmasını sağlayan evergreen (her daim başarılı) durumların önüne geçilir.
+Bu sayede, testler daha sağlam ve güvenilir hale gelir.
+
+# 🌐 Canlı Proje
+Canlı projeyi şu linkten inceleyebilirsiniz:
+[Live Demo](https://eteration-e-commerce.vercel.app/)
+
