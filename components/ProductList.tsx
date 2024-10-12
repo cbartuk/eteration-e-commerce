@@ -22,12 +22,37 @@ export default function ProductList() {
   const [currentPage, setCurrentPage] = useState(0);
   const [paginatedProducts, setPaginatedProducts] = useState<Product[]>([]);
 
-  // Arama filtresine göre ürünleri filtrele
+  // Tüm filtrelere göre ürünleri filtrele
   const filteredProducts = useMemo(() => {
-    return products.filter((product) =>
-      product.name.toLowerCase().includes(filters.search.toLowerCase())
-    );
-  }, [products, filters.search]);
+    return products
+      .filter((product) =>
+        product.name.toLowerCase().includes(filters.search.toLowerCase())
+      )
+      .filter((product) =>
+        filters.brands.length > 0
+          ? filters.brands.includes(product.brand)
+          : true
+      )
+      .filter((product) =>
+        filters.models.length > 0
+          ? filters.models.includes(product.model)
+          : true
+      )
+      .sort((a, b) => {
+        switch (filters.sortBy) {
+          case "Old to new":
+            return a.id.localeCompare(b.id);
+          case "New to old":
+            return b.id.localeCompare(a.id);
+          case "Price low to high":
+            return a.price - b.price;
+          case "Price high to low":
+            return b.price - a.price;
+          default:
+            return 0;
+        }
+      });
+  }, [products, filters]);
 
   useEffect(() => {
     if (status === "idle") {
@@ -40,6 +65,10 @@ export default function ProductList() {
     const endIndex = startIndex + ITEMS_PER_PAGE;
     setPaginatedProducts(filteredProducts.slice(startIndex, endIndex));
   }, [currentPage, filteredProducts]);
+
+  useEffect(() => {
+    setCurrentPage(0); // Filtreler değiştiğinde sayfayı sıfırla
+  }, [filters]);
 
   const handlePageClick = (selectedItem: { selected: number }) => {
     setCurrentPage(selectedItem.selected);
