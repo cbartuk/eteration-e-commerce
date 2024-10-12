@@ -110,4 +110,37 @@ Aşağıdaki diyagramda, projenin temel bileşenlerinin nasıl bir araya geldiğ
     |       LocalStorage        |
     +---------------------------+
 ```
+### Test Süreci ve Yapılandırma 🧪
+## 🚀 Giriş
+Projede React bileşenleri ve Redux yapısı için testler gerçekleştirdik. Jest ve React Testing Library kullanarak, her bir işlevselliği ve kullanıcı etkileşimlerini doğrulayan kapsamlı test senaryoları hazırladık.
 
+## 📚 Test Süreci
+1. Redux Slice'larının Test Edilmesi
+Amaç: productSlice ve cartSlice'in doğru bir şekilde çalıştığından emin olmak.
+Yapılanlar: Asenkron işlemler ve reducer'ların başlangıç durumlarını test ettik.
+Sonuç: Ürünlerin ve sepet işlemlerinin doğru şekilde güncellendiği doğrulandı.
+2. Bileşen Testleri
+Amaç: ProductList ve Header gibi bileşenlerin doğru bir şekilde render edilip edilmediğini test etmek.
+Yapılanlar: Mock edilmiş bir Redux store kullanarak, bileşenlerin belirli verilerle nasıl tepki verdiğini test ettik.
+Sonuç: Bileşenler, sağlanan verilerle beklenen çıktıyı verdi.
+3. JSX Hatalarının Çözülmesi 🛠️
+Karşılaşılan Sorun: Jest'in bazı JSX yapıları ayrıştırırken Unexpected token '<' hatası vermesi.
+Çözüm: Jest'in yapılandırmasında transformIgnorePatterns ve TypeScript ayarlarını düzenleyerek bu sorunu çözdük.
+Sonuç: Testler, JSX hatası olmadan çalışmaya başladı.
+4. Filtreleme ve Arama Fonksiyonelliği
+Amaç: Filters bileşeninde yapılan seçimlerin ProductList'i doğru bir şekilde güncellemesini sağlamak.
+Yapılanlar: Redux'da filtreleme aksiyonlarını düzelttik ve filtre değişikliklerinin anında bileşenlere yansımasını sağladık.
+Sonuç: Filtreler etkin bir şekilde çalışarak ürün listesine yansıdı.
+5. UI Etkileşim Testleri 🖱️
+Amaç: Kullanıcı etkileşimlerini (örneğin: filtreleme, sıralama, sepete ürün ekleme) doğru bir şekilde simüle etmek.
+Yapılanlar: Filtreleme ve sıralama kutularına tıklama, arama ve sepete ekleme gibi kullanıcı aksiyonlarını test ettik.
+Sonuç: Kullanıcı etkileşimleri beklenen sonuçları verdi.
+## ✅ Test Sonuçları
+Testlerimiz başarıyla tamamlandı ve aşağıdaki sonuçlar alındı:
+
+```bash
+PASS  features/cart/cartSlice.test.ts
+PASS  features/product/productSlice.test.ts
+PASS  components/ProductList.test.tsx
+PASS  components/Header.test.tsx
+```
