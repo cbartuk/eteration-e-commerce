@@ -3,6 +3,7 @@ import ProductList from "./ProductList";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import productReducer, { ProductState } from "../features/product/productSlice";
+import { generateMockProductData } from "../test-utils/mockData";
 
 // `next/navigation` modülünü mockluyoruz
 jest.mock("next/navigation", () => ({
@@ -11,29 +12,11 @@ jest.mock("next/navigation", () => ({
   }),
 }));
 
-const mockProducts = [
-  {
-    id: "1",
-    name: "Product A",
-    price: 100,
-    image: "/imageA.jpg",
-    description: "Description A",
-    brand: "BrandA",
-    model: "ModelA",
-  },
-  {
-    id: "2",
-    name: "Product B",
-    price: 200,
-    image: "/imageB.jpg",
-    description: "Description B",
-    brand: "BrandB",
-    model: "ModelB",
-  },
-];
-
 describe("ProductList", () => {
-  test("renders ProductList component", () => {
+  test("renders ProductList component with mock products", () => {
+    // Rastgele 2 ürün üretmek için mock fonksiyonumuzu kullanıyoruz
+    const mockProducts = generateMockProductData(2);
+
     const initialState: ProductState = {
       products: mockProducts,
       brands: [],
@@ -62,10 +45,9 @@ describe("ProductList", () => {
     );
 
     // Ürünlerin render edildiğini kontrol ediyoruz
-    const productA = screen.getByText("Product A");
-    expect(productA).toBeInTheDocument();
-
-    const productB = screen.getByText("Product B");
-    expect(productB).toBeInTheDocument();
+    mockProducts.forEach((product) => {
+      const productName = screen.getByText(product.name);
+      expect(productName).toBeInTheDocument();
+    });
   });
 });
