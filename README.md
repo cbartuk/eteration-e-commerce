@@ -53,25 +53,25 @@ Bu proje, modern bir e-ticaret uygulaması oluşturmayı hedeflemektedir. Kullan
 
 
 ## 🚀 Geliştirme Süreçleri
-Component Geliştirme:
-Proje Header, Filters, ProductList, ve Cart gibi temel bileşenlere ayrıldı.
-Her bir component, kendi işlevine odaklanacak şekilde geliştirildi.
-Header kullanıcı bilgilerini, sepet simgesini ve arama çubuğunu içerirken, Filters bileşeni ürünleri sıralama ve filtreleme işlemlerini içerdi.
-Redux Yapısının Oluşturulması:
-productSlice.ts: Ürün verilerinin API'den çekilmesi, filtreleme ve sıralama işlemleri burada yönetildi.
-cartSlice.ts: Sepete ürün ekleme, sepetin yönetimi ve localStorage ile senkronize edilmesi sağlandı.
-Responsive Tasarım ve Tailwind CSS:
-Tailwind CSS kullanılarak, hızlı bir şekilde stil verildi.
-Mobil cihazlar için filtre ve sepetlerin modal olarak açılması sağlandı.
-Masaüstü cihazlarda filtrelerin sidebar olarak görünmesi ve sepetin sağda sabit durması sağlandı.
-Ürün Listeleme ve Filtreleme:
-Ürünler ProductList bileşeninde listelendi ve sayfalama (ReactPaginate) kullanılarak 12 ürünlük gruplar halinde görüntülendi.
-Arama, sıralama ve filtreleme işlemleri Filters bileşeni aracılığıyla yapıldı ve Redux state'e göre ProductList güncellendi.
+### Component Geliştirme:
+* Proje Header, Filters, ProductList, ve Cart gibi temel bileşenlere ayrıldı.
+* Her bir component, kendi işlevine odaklanacak şekilde geliştirildi.
+* Header kullanıcı bilgilerini, sepet simgesini ve arama çubuğunu içerirken, Filters bileşeni ürünleri sıralama ve filtreleme işlemlerini içerdi.
+### Redux Yapısının Oluşturulması:
+* productSlice.ts: Ürün verilerinin API'den çekilmesi, filtreleme ve sıralama işlemleri burada yönetildi.
+* cartSlice.ts: Sepete ürün ekleme, sepetin yönetimi ve localStorage ile senkronize edilmesi sağlandı.
+### Responsive Tasarım ve Tailwind CSS:
+* Tailwind CSS kullanılarak, hızlı bir şekilde stil verildi.
+* Mobil cihazlar için filtre ve sepetlerin modal olarak açılması sağlandı.
+* Masaüstü cihazlarda filtrelerin sidebar olarak görünmesi ve sepetin sağda sabit durması sağlandı.
+### Ürün Listeleme ve Filtreleme:
+* Ürünler ProductList bileşeninde listelendi ve sayfalama (ReactPaginate) kullanılarak 12 ürünlük gruplar halinde görüntülendi.
+* Arama, sıralama ve filtreleme işlemleri Filters bileşeni aracılığıyla yapıldı ve Redux state'e göre ProductList güncellendi.
 
 ## 🎨 Tasarım Yaklaşımı ve Düşüncesi
-Mobile-First Design: İlk olarak mobil cihazlarda kullanıcı deneyimi düşünülerek tasarım yapıldı, ardından daha büyük ekranlar için optimize edildi.
-Kullanıcı Odaklı Tasarım: Kullanıcıların kolayca ürün arayabilmesi, filtreleyebilmesi ve sepete ekleyebilmesi için sade ve anlaşılır bir arayüz tasarlandı.
-Modern ve Şık Görünüm: Tailwind CSS kullanılarak modern ve şık bir arayüz elde edildi. Renkler ve tipografi kullanıcıyı yormayacak şekilde ayarlandı.
+* Mobile-First Design: İlk olarak mobil cihazlarda kullanıcı deneyimi düşünülerek tasarım yapıldı, ardından daha büyük ekranlar için optimize edildi.
+* Kullanıcı Odaklı Tasarım: Kullanıcıların kolayca ürün arayabilmesi, filtreleyebilmesi ve sepete ekleyebilmesi için sade ve anlaşılır bir arayüz tasarlandı.
+* Modern ve Şık Görünüm: Tailwind CSS kullanılarak modern ve şık bir arayüz elde edildi. Renkler ve tipografi kullanıcıyı yormayacak şekilde ayarlandı.
 
 ## ⚙️ Kurulum ve Çalıştırma
 Bu projeyi klonlayın:
