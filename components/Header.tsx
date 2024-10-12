@@ -60,7 +60,7 @@ const Header = ({ showCartIcon = false }: { showCartIcon?: boolean }) => {
   };
 
   return (
-    <header className="bg-blue-500 text-white p-4">
+    <header className="bg-blue-500 text-white p-4 sticky top-0 z-50">
       <div className="container max-w-screen-lg mx-auto flex justify-between items-center gap-4">
         <h1
           onClick={() => router.push("/")}

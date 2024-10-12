@@ -16,8 +16,13 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-gray-50">
-      {/* Mobil için ikon butonlar */}
-      <div className="sticky top-0 z-50 flex lg:hidden justify-between px-4 py-2 bg-white shadow w-full">
+      {/* Header sticky yapıldı */}
+      <div className="sticky top-0 z-50 bg-white shadow">
+        {/* Header content'i burada yer alıyor, bu zaten sticky */}
+      </div>
+
+      {/* Mobil için ikonlar (Sticky + Header'dan sonra hizalanır) */}
+      <div className="sticky top-[70px] z-40 flex lg:hidden justify-between px-4 py-2 bg-white shadow w-full">
         <button
           className="bg-blue-500 text-white p-2 rounded-full"
           onClick={toggleFilters}
