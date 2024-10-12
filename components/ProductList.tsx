@@ -92,11 +92,11 @@ export default function ProductList() {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-4 xl:gap-8 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-4 xl:gap-8 mb-6 justify-items-center">
         {paginatedProducts.map((product) => (
           <div
             key={product.id}
-            className="border rounded-lg shadow-lg bg-white hover:shadow-2xl transition-shadow duration-300 flex flex-col cursor-pointer"
+            className="border rounded-lg shadow-lg bg-white hover:shadow-2xl transition-shadow duration-300 flex flex-col cursor-pointer w-full max-w-xs mx-auto"
             onClick={() => router.push(`/products/${product.id}`)}
           >
             <Image

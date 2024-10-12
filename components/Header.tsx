@@ -86,7 +86,7 @@ const Header = ({ showCartIcon = false }: { showCartIcon?: boolean }) => {
 
         {/* Right side icons and info */}
         <div className="flex items-center space-x-6">
-          <div className="flex items-center space-x-2">
+          <div className="hidden md:flex items-center space-x-2">
             <FiUser size={20} />
             <span>Bartu</span>
           </div>

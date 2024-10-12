@@ -15,9 +15,9 @@ export default function Home() {
   const toggleCart = () => setCartOpen(!isCartOpen);
 
   return (
-    <div className="flex flex-col bg-gray-50 overflow-x-hidden">
+    <div className="flex flex-col bg-gray-50">
       {/* Mobil için ikon butonlar */}
-      <div className="flex lg:hidden justify-between px-4 py-2 bg-white shadow mb-4">
+      <div className="sticky top-0 z-50 flex lg:hidden justify-between px-4 py-2 bg-white shadow w-full">
         <button
           className="bg-blue-500 text-white p-2 rounded-full"
           onClick={toggleFilters}
@@ -32,7 +32,7 @@ export default function Home() {
         </button>
       </div>
 
-      <div className="flex flex-1 gap-6">
+      <div className="flex flex-1 gap-6 overflow-hidden">
         {/* Filtreler */}
         <aside
           className={`hidden lg:block lg:w-1/5 xl:w-1/6 p-4 bg-gray-100 rounded-lg shadow-md`}
