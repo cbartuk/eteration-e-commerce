@@ -110,7 +110,7 @@ Aşağıdaki diyagramda, projenin temel bileşenlerinin nasıl bir araya geldiğ
     |       LocalStorage        |
     +---------------------------+
 ```
-### Test Süreci ve Yapılandırma 🧪
+# Test Süreci ve Yapılandırma 🧪
 ## 🚀 Giriş
 Projede React bileşenleri ve Redux yapısı için testler gerçekleştirdik. Jest ve React Testing Library kullanarak, her bir işlevselliği ve kullanıcı etkileşimlerini doğrulayan kapsamlı test senaryoları hazırladık.
 
