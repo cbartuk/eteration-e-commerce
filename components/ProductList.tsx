@@ -1,29 +1,33 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  fetchProducts,
-  selectFilteredProducts,
-} from "@/features/product/productSlice";
+import { fetchProducts, Product } from "@/features/product/productSlice";
 import { addItem } from "@/features/cart/cartSlice";
 import { RootState, AppDispatch } from "@/store/store";
 import Image from "next/image";
 import ReactPaginate from "react-paginate";
 import { useRouter } from "next/navigation";
+import SkeletonLoader from "@/components/SkeletonLoader";
 
 const ITEMS_PER_PAGE = 12;
 
 export default function ProductList() {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
-  const products = useSelector(selectFilteredProducts);
-  const { status, error } = useSelector((state: RootState) => state.products);
+  const { products, filters, status, error } = useSelector(
+    (state: RootState) => state.products
+  );
 
   const [currentPage, setCurrentPage] = useState(0);
-  const [paginatedProducts, setPaginatedProducts] = useState(
-    products.slice(0, ITEMS_PER_PAGE)
-  );
+  const [paginatedProducts, setPaginatedProducts] = useState<Product[]>([]);
+
+  // Arama filtresine göre ürünleri filtrele
+  const filteredProducts = useMemo(() => {
+    return products.filter((product) =>
+      product.name.toLowerCase().includes(filters.search.toLowerCase())
+    );
+  }, [products, filters.search]);
 
   useEffect(() => {
     if (status === "idle") {
@@ -34,22 +38,28 @@ export default function ProductList() {
   useEffect(() => {
     const startIndex = currentPage * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
-    setPaginatedProducts(products.slice(startIndex, endIndex));
-  }, [currentPage, products]);
+    setPaginatedProducts(filteredProducts.slice(startIndex, endIndex));
+  }, [currentPage, filteredProducts]);
 
   const handlePageClick = (selectedItem: { selected: number }) => {
     setCurrentPage(selectedItem.selected);
   };
 
   if (status === "loading") {
-    return <p>Loading products...</p>;
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-4 xl:gap-8 mb-6">
+        {Array.from({ length: ITEMS_PER_PAGE }, (_, index) => (
+          <SkeletonLoader key={index} />
+        ))}
+      </div>
+    );
   }
 
   if (status === "failed") {
     return <p>Error: {error}</p>;
   }
 
-  const pageCount = Math.ceil(products.length / ITEMS_PER_PAGE);
+  const pageCount = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
 
   return (
     <div>

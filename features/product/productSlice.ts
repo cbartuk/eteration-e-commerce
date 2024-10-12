@@ -48,6 +48,9 @@ export const fetchProducts = createAsyncThunk(
     const response = await fetch(
       "https://5fc9346b2af77700165ae514.mockapi.io/products"
     );
+    if (!response.ok) {
+      throw new Error("Failed to fetch products");
+    }
     const data = await response.json();
 
     const brands: string[] = Array.from(
@@ -128,3 +131,4 @@ export const selectFilteredProducts = (state: RootState) => {
 };
 
 export default productSlice.reducer;
+export type { ProductState };

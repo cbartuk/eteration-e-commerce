@@ -66,3 +66,4 @@ export const { addItem, increment, decrement, removeItem, setItems } =
   cartSlice.actions;
 
 export default cartSlice.reducer;
+export type { CartState };
