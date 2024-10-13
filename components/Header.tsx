@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { RootState } from "@/store/store";
 import { FiShoppingCart, FiUser, FiBriefcase, FiSearch } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
-import { setFilter } from "@/features/product/productSlice";
+import { clearFilters, setFilter } from "@/features/product/productSlice";
 import Cart from "@/components/Cart";
 
 const Header = ({ showCartIcon = false }: { showCartIcon?: boolean }) => {
@@ -56,6 +56,11 @@ const Header = ({ showCartIcon = false }: { showCartIcon?: boolean }) => {
   // Arama input değiştiğinde filtreyi güncelle
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
+
+    // Searchbar tetiklendiğinde tüm filtreleri temizle
+    dispatch(clearFilters());
+
+    // Sadece search filtresini ekle
     dispatch(setFilter({ filterType: "search", value: e.target.value }));
   };
 

@@ -76,7 +76,15 @@ const productSlice = createSlice({
       }>
     ) => {
       const { filterType, value } = action.payload;
-      state.filters[filterType] = value as never; // Tip uyuşmazlığı sorununu çözüyoruz
+      state.filters[filterType] = value as never;
+    },
+    clearFilters: (state) => {
+      state.filters = {
+        sortBy: "",
+        brands: [],
+        models: [],
+        search: "",
+      };
     },
   },
   extraReducers: (builder) => {
@@ -97,7 +105,7 @@ const productSlice = createSlice({
   },
 });
 
-export const { setFilter } = productSlice.actions;
+export const { setFilter, clearFilters } = productSlice.actions;
 
 // Ürünleri filtreleyen selector
 export const selectFilteredProducts = (state: RootState) => {
@@ -131,4 +139,5 @@ export const selectFilteredProducts = (state: RootState) => {
 };
 
 export default productSlice.reducer;
+
 export type { ProductState };

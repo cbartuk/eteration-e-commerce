@@ -59,7 +59,7 @@ const Cart = ({ isModalOpen = false }: { isModalOpen?: boolean }) => {
           cartItems.map((item) => (
             <div
               key={item.id}
-              className={`flex justify-between items-center border-b pb-2 ${
+              className={`flex flex-col sm:flex-row sm:items-center justify-between border-b pb-2 ${
                 isModalOpen ? "text-lg" : "text-xs lg:text-sm xl:text-md"
               }`}
             >
@@ -89,11 +89,15 @@ const Cart = ({ isModalOpen = false }: { isModalOpen?: boolean }) => {
                   ${item.price.toFixed(2)}
                 </p>
               </div>
-              <div className="flex items-center space-x-2 lg:space-x-4">
+              <div
+                className={`flex items-center space-x-1 lg:space-x-2 xl:space-x-3 mt-2 sm:mt-0 ${
+                  isModalOpen && "justify-center"
+                }`}
+              >
                 <button
                   onClick={() => dispatch(decrement(item.id))}
-                  className={`bg-gray-300 hover:bg-gray-400 p-1 ${
-                    isSmallScreen ? "p-1" : "lg:p-2 xl:p-3"
+                  className={`bg-gray-300 hover:bg-gray-400 ${
+                    isSmallScreen ? "p-2" : "lg:p-2 xl:p-3"
                   } rounded-full`}
                 >
                   <FiMinus size={isSmallScreen ? 14 : 16} />
@@ -105,8 +109,8 @@ const Cart = ({ isModalOpen = false }: { isModalOpen?: boolean }) => {
                 </span>
                 <button
                   onClick={() => dispatch(increment(item.id))}
-                  className={`bg-gray-300 hover:bg-gray-400 p-1 ${
-                    isSmallScreen ? "p-1" : "lg:p-2 xl:p-3"
+                  className={`bg-gray-300 hover:bg-gray-400 ${
+                    isSmallScreen ? "p-2" : "lg:p-2 xl:p-3"
                   } rounded-full`}
                 >
                   <FiPlus size={isSmallScreen ? 14 : 16} />
