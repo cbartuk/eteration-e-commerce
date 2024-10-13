@@ -196,6 +196,24 @@ npm install @faker-js/faker --save-dev
 * Testlerin her zaman başarılı olmasını sağlayan evergreen (her daim başarılı) durumların önüne geçilir.
 Bu sayede, testler daha sağlam ve güvenilir hale gelir.
 
+## 12 Ekim 2024 Test Güncellemeleri
+
+### 🛠️ Yapılan Değişiklikler
+* **🔍 Search ve Filtre İşlemleri:**
+  - Ürün arama çubuğu ile yapılan her aramada tüm filtrelerin (marka, model, sıralama) temizlenmesi sağlandı.
+  - `productSlice` içerisine `clearFilters` fonksiyonu eklendi ve `setFilter` işlemi güncellendi.
+
+
+### ✅ Test Güncellemeleri
+* **🧪 ProductList Testleri:**
+  - Ürün arama işlemi yapıldığında filtrelerin sıfırlandığını kontrol eden yeni bir test eklendi.
+  - Arama sonrası filtrelerin (marka, model, sıralama) sıfırlandığı ve yalnızca aramanın aktif olduğunu test eden senaryo eklendi.
+
+* **🧪 ProductSlice Testleri:**
+  - `fetchProducts` başarılı ve başarısız durumlar için test senaryoları güncellendi.
+  - Filtreleme işleminin doğru çalıştığından emin olmak için yeni testler eklendi, `setFilter` ve `clearFilters` işlemleri kapsamlı bir şekilde test edildi.
+
+
 # 📅 12 Ekim 2024 - Güncellemeler ve İyileştirmeler
 ## 🚀 Yeni Özellikler ve İyileştirmeler
 ## 🛠️ Yapılan Güncellemeler:
