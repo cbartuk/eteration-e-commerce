@@ -196,6 +196,34 @@ npm install @faker-js/faker --save-dev
 * Testlerin her zaman başarılı olmasını sağlayan evergreen (her daim başarılı) durumların önüne geçilir.
 Bu sayede, testler daha sağlam ve güvenilir hale gelir.
 
+# 📅 12 Ekim 2024 - Güncellemeler ve İyileştirmeler
+## 🚀 Yeni Özellikler ve İyileştirmeler
+## 🛠️ Yapılan Güncellemeler:
+### Filtre Durumu Saklama:
+* Filtre modallarını kapatıp açtığımızda filtrelerin seçili durumlarını koruyacak şekilde ayarlandı.
+* Artık kullanıcı filtre seçimi yaptığında, modal kapandığında bile filtreler kaybolmayacak.
+
+### Arama ile Filtre Temizleme:
+* Ana arama çubuğu (Search bar) kullanıldığında tüm filtrelerin temizlenmesi sağlandı.
+* Filtreler sıfırlanarak daha temiz bir arama deneyimi sunuldu.
+
+### Modal Animasyonları:
+* Modalların açılış ve kapanış animasyonları iyileştirildi.
+* Modallar açıldıkları yönde aynı hızda yumuşak bir geçişle kapanacak şekilde ayarlandı.
+
+### Mobil Sepet İkonu (Cart Item Count):
+* Mobil cihazlarda, header bölümündeki sepet ikonuna kırmızı bir sepet sayacı eklendi.
+* Sepette kaç ürün olduğu, ikonun yanında kırmızı bir balon içinde gösteriliyor.
+
+### Sticky İkonlar ve Filtre Barı:
+* Mobil ikonlar (filtre ve sepet) sticky yapıldı. Sayfa kaydırıldıkça sabit kalacak.
+* Filtre modallarında kullanılan arama barı (search bar) kaydırıldığında sabit kalacak şekilde ayarlandı.
+
+Footer Düzenlemesi:
+* Footer, header’dan daha koyu bir renge sahip olacak şekilde düzenlendi.
+* El yazısı tarzında, şık bir slogan eklendi.
+* Menüdeki ikonlar daha yaratıcı bir şekilde düzenlendi.
+
 # 🌐 Canlı Proje
 Canlı projeyi şu linkten inceleyebilirsiniz:
 [Live Demo](https://eteration-e-commerce.vercel.app/)
