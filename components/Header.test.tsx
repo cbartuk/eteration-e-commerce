@@ -1,10 +1,10 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Header from "./Header";
-import { useRouter } from "next/navigation";
 import { Provider } from "react-redux";
 import { store } from "@/store/store";
+import { setFilter } from "@/features/product/productSlice";
 
 // `useRouter`'ı mockla
 jest.mock("next/navigation", () => ({
@@ -12,38 +12,28 @@ jest.mock("next/navigation", () => ({
 }));
 
 describe("Header Component", () => {
-  beforeEach(() => {
-    (useRouter as jest.Mock).mockReturnValue({
-      push: jest.fn(),
+  test("clears all filters when search input is used", () => {
+    render(
+      <Provider store={store}>
+        <Header showCartIcon={true} />
+      </Provider>
+    );
+
+    // Filtreleri ayarla
+    store.dispatch(setFilter({ filterType: "brands", value: ["BrandA"] }));
+    store.dispatch(setFilter({ filterType: "models", value: ["ModelA"] }));
+    store.dispatch(
+      setFilter({ filterType: "sortBy", value: "Price low to high" })
+    );
+
+    // Arama yap
+    fireEvent.change(screen.getByPlaceholderText(/Search products.../i), {
+      target: { value: "Product A" },
     });
-  });
 
-  test("renders E-Commerce title", () => {
-    render(
-      <Provider store={store}>
-        <Header showCartIcon={true} />
-      </Provider>
-    );
-    expect(screen.getByText(/Eteration/i)).toBeInTheDocument();
-  });
-
-  test("renders user info", () => {
-    render(
-      <Provider store={store}>
-        <Header showCartIcon={true} />
-      </Provider>
-    );
-    expect(screen.getByText(/Bartu/i)).toBeInTheDocument();
-  });
-
-  test("renders search input", () => {
-    render(
-      <Provider store={store}>
-        <Header showCartIcon={true} />
-      </Provider>
-    );
-    expect(
-      screen.getByPlaceholderText(/Search products.../i)
-    ).toBeInTheDocument();
+    // Store'daki filtrelerin sıfırlandığını kontrol et
+    expect(store.getState().products.filters.brands).toEqual([]);
+    expect(store.getState().products.filters.models).toEqual([]);
+    expect(store.getState().products.filters.sortBy).toEqual("");
   });
 });

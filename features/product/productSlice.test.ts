@@ -2,6 +2,7 @@ import productReducer, {
   ProductState,
   setFilter,
   fetchProducts,
+  clearFilters,
 } from "./productSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import { AnyAction } from "@reduxjs/toolkit";
@@ -70,6 +71,37 @@ test("should handle setFilter action", () => {
   expect(updatedState.filters.sortBy).toEqual("Price low to high");
 });
 
+// Test to clear filters when search is performed
+test("should clear all filters when a search is made", () => {
+  const initialState: ProductState = {
+    products: mockFetchResponse,
+    brands: ["BrandA"],
+    models: ["ModelA"],
+    filters: {
+      sortBy: "Price low to high",
+      brands: ["BrandA"],
+      models: ["ModelA"],
+      search: "",
+    },
+    status: "succeeded",
+    error: null,
+  };
+
+  const store = configureStore({
+    reducer: { products: productReducer },
+    preloadedState: { products: initialState },
+  });
+
+  store.dispatch(clearFilters());
+
+  const updatedState = store.getState().products;
+
+  expect(updatedState.filters.brands).toEqual([]);
+  expect(updatedState.filters.models).toEqual([]);
+  expect(updatedState.filters.sortBy).toEqual("");
+  expect(updatedState.filters.search).toEqual("");
+});
+
 // Test fetchProducts thunk success scenario
 test("should handle fetchProducts fulfilled", async () => {
   global.fetch = jest.fn(() =>
@@ -83,7 +115,6 @@ test("should handle fetchProducts fulfilled", async () => {
   await store.dispatch(fetchProducts() as unknown as AnyAction);
 
   const state = store.getState().products;
-  //console.log("State after fetchProducts:", state); // Debugging purpose
 
   expect(state.status).toBe("succeeded");
   expect(state.products).toEqual(mockFetchResponse);
